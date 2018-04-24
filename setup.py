@@ -16,11 +16,17 @@ setup(
             "libffpy",
             sources=["libffpy.pyx", "libff_wrapper.cpp"],
             language="c++",
-            include_dirs=["/usr/local/include/libff"],
-            library_dirs = ["/usr/local/lib"],
-            extra_compile_args = ["-std=c++11", "-fPIC", "-shared", "-w", "-static"],
-            extra_link_args = ["-lgmp", "-lff", "-lsnark", "-lcrypto", "-fopenmp", "-g"]
+            include_dirs=["libff/include", "libff"],
+            library_dirs = ["/usr/local/lib", "libff/lib", "libff/build/depends"],
+            extra_compile_args = ["-std=c++11", "-fPIC", "-shared", "-w", "-static", "-O3"],
+            extra_link_args = ["-lgmp", "-lzm", "-lff", "-fopenmp", "-g"]
         )
     ),
-    cmdclass = {'build_ext': build_ext}
+    cmdclass = {'build_ext': build_ext},
+    setup_requires=[
+        "cython >= 0.22.1",
+    ],
+    install_requires=[
+	"cython >= 0.22.1",
+    ]
 )
