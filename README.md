@@ -1,13 +1,8 @@
 Implementation of a Re-Encryption Mix-Net
 ======================================================
 
-This module implements the re-encryption mix-net
-presented by Fauzi et al. in their paper:
-["An Efficient Pairing-Based Shuffle Argument
-Draft"](http://kodu.ut.ee/~lipmaa/papers/flsz17/hat_shuffle.pdf).
-We use the
-[libffpy](https://github.com/eellak/gsoc17module-zeus/tree/master/libffpy)
-wrapper of [libff](https://github.com/scipr-lab/libff) library
+Cython wrapper for the 
+[libff](https://github.com/scipr-lab/libff) library
 for multiplications on the elliptic curve.
 
 Python
