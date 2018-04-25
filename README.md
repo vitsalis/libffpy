@@ -18,6 +18,22 @@ The module requires **Python 2.7**.
 Installing libffpy
 ==================
 
+### From PyPI
+
+1. Install Dependencies:
+
+```bash
+sudo apt-get install libprocps4-dev
+```
+
+2. Install libffpy
+
+```bash
+pip install libffpy
+```
+
+### From source
+
 1. Go to libffpy directory:
 
 ```bash
@@ -54,7 +70,7 @@ pip install cython
 6. Install libffpy
 
 ```bash
-cd ../../
+cd ../../../
 sudo python setup.py install
 ```
 
@@ -70,4 +86,10 @@ To run it:
 ```
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libprocps.so
 python demo.py
+```
+
+Or you can add the following line to your `.bashrc`.
+
+```bash
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libprocps.so
 ```
