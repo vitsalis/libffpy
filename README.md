@@ -46,13 +46,13 @@ cd libffpy
 sudo apt-get install build-essential git libboost-all-dev cmake libgmp3-dev libssl-dev libprocps4-dev pkg-config
 ```
 
-3. Fetch dependencies from their GitHub repos:
+2. Fetch dependencies from their GitHub repos:
 
 ```bash
 git submodule init && git submodule update
 ```
 
-4. Install libff
+3. Install libff
 
 ```bash
 cd libff
@@ -61,13 +61,13 @@ mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=../
 make && make install
 ```
 
-5. Install cython
+4. Install cython
 
 ```bash
 pip install cython
 ```
 
-6. Install libffpy
+5. Install libffpy
 
 ```bash
 cd ../../../
