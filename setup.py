@@ -1,9 +1,7 @@
 import os
-# from distutils.core import setup
-from setuptools import setup
+from setuptools import setup, find_packages
 from distutils.extension import Extension
 from Cython.Build import cythonize
-
 from Cython.Distutils import build_ext
 
 
@@ -11,28 +9,22 @@ os.environ["CC"] = "g++"
 os.environ["CXX"] = "g++"
 
 SRC_DIR = "libffpy"
-PACKAGES = [SRC_DIR]
 
 setup(
     name="libffpy",
 	version="0.1",
-	packages=PACKAGES,
-
+	packages=find_packages(),
 	author="Vitalis Salis",
 	author_email="vitsalis@gmail.com",
 	description="Cython wrapper for the libff library",
 	license="MIT",
 	keywords="libff ecc bn128 wrapper",
 	url="https://github.com/VitSalis/libffpy",
-
-    	install_requires=[
-		"cython >= 0.22.1"
-	],
-
+    install_requires=["cython >= 0.22.1"],
     ext_modules=cythonize(
         Extension(
             SRC_DIR + ".libffpy",
-            sources=[ SRC_DIR + "/libffpy.pyx", SRC_DIR + "/libff_wrapper.cpp"],
+            sources=[SRC_DIR + "/libffpy.pyx", SRC_DIR + "/libff_wrapper.cpp"],
             language="c++",
             include_dirs=[SRC_DIR + "/libff/include", SRC_DIR + "/libff"],
             library_dirs = ["/usr/local/lib", SRC_DIR + "/libff/lib",
