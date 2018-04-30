@@ -1,1 +1,1 @@
-from libffpy import *
+from .libffpy import *
