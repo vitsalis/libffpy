@@ -5,7 +5,7 @@ cd libff
 # libff submodules
 git submodule init && git submodule update
 # install libff
-mkdir build
+mkdir -p build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../
 make
