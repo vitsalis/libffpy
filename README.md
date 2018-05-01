@@ -18,7 +18,7 @@ Installing libffpy
 1. Install Dependencies:
 
 ```bash
-sudo apt-get install libprocps4-dev
+sudo apt-get install build-essential git libboost-all-dev cmake libgmp3-dev libssl-dev libprocps4-dev pkg-config python-pip
 ```
 
 2. Install libffpy
@@ -27,46 +27,51 @@ sudo apt-get install libprocps4-dev
 pip install libffpy
 ```
 
+3. Set LD_PRELOAD
+
+Add to `.bashrc`:
+
+```bash
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libprocps.so
+```
+
+or set an environmental variable for the current session
+
+```bash
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libprocps.so
+```
+
+
 ### From source
 
-1. Go to libffpy directory:
+
+1. Install dependencies:
 
 ```bash
-cd libffpy
-```
-
-2. Install dependencies:
-
-```bash
-sudo apt-get install build-essential git libboost-all-dev cmake libgmp3-dev libssl-dev libprocps4-dev pkg-config
-```
-
-2. Fetch dependencies from their GitHub repos:
-
-```bash
-git submodule init && git submodule update
-```
-
-3. Install libff
-
-```bash
-cd libff
-git submodule init && git submodule update
-mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=../
-make && make install
-```
-
-4. Install cython
-
-```bash
+sudo apt-get install build-essential git libboost-all-dev cmake libgmp3-dev libssl-dev libprocps4-dev pkg-config python-pip
+./install-depends.sh
 pip install cython
 ```
 
-5. Install libffpy
+2. Install libffpy
 
 ```bash
-cd ../../../
+sudo python setup.py build_ext --inplace
 sudo python setup.py install
+```
+
+3. Set LD_PRELOAD
+
+Add to `.bashrc`:
+
+```bash
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libprocps.so
+```
+
+or set an environmental variable for the current session
+
+```bash
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libprocps.so
 ```
 
 ***So far we have tested these only on Ubuntu 16.04 LTS.***
