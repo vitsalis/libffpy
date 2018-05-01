@@ -1,14 +1,22 @@
 import os
 from setuptools import setup, find_packages
+from subprocess import call
+from setuptools.command.install import install
 from distutils.extension import Extension
 from Cython.Build import cythonize
 from Cython.Distutils import build_ext
 
 
-os.environ["CC"] = "g++"
-os.environ["CXX"] = "g++"
+# os.environ["CC"] = "g++"
+# os.environ["CXX"] = "g++"
 
 SRC_DIR = "libffpy"
+
+class CustomBuild(install):
+    def run(self):
+        call(['bash', 'install-depends.sh'])
+        install.run(self)
+
 
 setup(
     name="libffpy",
@@ -33,5 +41,5 @@ setup(
             extra_link_args = ["-lgmp", "-lzm", "-lff", "-fopenmp", "-g"]
         )
     ),
-    cmdclass = {'build_ext': build_ext},
+    cmdclass = {'build_ext': build_ext, 'install': CustomBuild},
 )
