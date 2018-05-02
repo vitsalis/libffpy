@@ -1,4 +1,4 @@
-Implementation of a Re-Encryption Mix-Net
+Cython wrapper for the libff library
 ======================================================
 
 Cython wrapper for the 
