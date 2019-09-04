@@ -68,6 +68,7 @@ cdef class BigNum:
     cpdef eq(self, BigNum other):
         return self.getElemRef()[0] == other.getElemRef()[0]
 
+<<<<<<< HEAD
     cpdef intEq(self, long long other):
         cdef Fr[curve] *newptr
         newptr = new Fr[curve](other)
@@ -230,6 +231,8 @@ cdef class BigNum:
             return bgleft.intGe(intright)
         return NotImplemented
 
+=======
+>>>>>>> parent of 09abd3f... Add comparison operations
     cpdef BigNum pow(self, unsigned long p):
         cdef Fr[curve] *newptr
         newptr = new Fr[curve](self.getElemRef()[0] ^ p)
