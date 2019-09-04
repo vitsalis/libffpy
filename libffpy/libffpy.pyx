@@ -68,6 +68,153 @@ cdef class BigNum:
     cpdef eq(self, BigNum other):
         return self.getElemRef()[0] == other.getElemRef()[0]
 
+    def __eq__(x, y):
+        cdef BigNum bgleft, bgright
+        cdef long long intright
+
+        if not (isinstance(x, BigNum) or isinstance(y, BigNum)):
+            return NotImplemented
+
+        if isinstance(x, BigNum):
+            if isinstance(y, BigNum):
+                bgleft = <BigNum>x
+                bgright = <BigNum>y
+                return bgleft.getElemRef()[0] == bgright.getElemRef()[0]
+            elif isinstance(y, int) or isinstance(y, long):
+                bgleft = <BigNum>x
+                intright = <long long>y
+                return bgleft.getElemRef()[0] == intright
+            else:
+                return NotImplemented
+
+        # y is bignum
+        if isinstance(x, int) or isinstance(x, long):
+            bgleft = <BigNum>y
+            intright = <long long>x
+            return bgleft.getElemRef()[0] == intright
+
+        return NotImplemented
+
+    cpdef lt(self, BigNum other):
+        return self.getElemRef()[0] < other.getElemRef()[0]
+
+    def __lt__(x, y):
+        cdef BigNum bgleft, bgright
+        cdef long long intright
+
+        if not (isinstance(x, BigNum) or isinstance(y, BigNum)):
+            return NotImplemented
+
+        if isinstance(x, BigNum):
+            if isinstance(y, BigNum):
+                bgleft = <BigNum>x
+                bgright = <BigNum>y
+                return bgleft.getElemRef()[0] < bgright.getElemRef()[0]
+            elif isinstance(y, int) or isinstance(y, long):
+                bgleft = <BigNum>x
+                intright = <long long>y
+                return bgleft.getElemRef()[0] < intright
+            else:
+                return NotImplemented
+
+        # y is bignum
+        if isinstance(x, int) or isinstance(x, long):
+            bgleft = <BigNum>y
+            intright = <long long>x
+            return bgleft.getElemRef()[0] < intright
+
+        return NotImplemented
+
+    cpdef le(self, BigNum other):
+        return self.getElemRef()[0] <= other.getElemRef()[0]
+
+    def __le__(x, y):
+        cdef BigNum bgleft, bgright
+        cdef long long intright
+
+        if not (isinstance(x, BigNum) or isinstance(y, BigNum)):
+            return NotImplemented
+
+        if isinstance(x, BigNum):
+            if isinstance(y, BigNum):
+                bgleft = <BigNum>x
+                bgright = <BigNum>y
+                return bgleft.getElemRef()[0] <= bgright.getElemRef()[0]
+            elif isinstance(y, int) or isinstance(y, long):
+                bgleft = <BigNum>x
+                intright = <long long>y
+                return bgleft.getElemRef()[0] <= intright
+            else:
+                return NotImplemented
+
+        # y is bignum
+        if isinstance(x, int) or isinstance(x, long):
+            bgleft = <BigNum>y
+            intright = <long long>x
+            return bgleft.getElemRef()[0] <= intright
+
+        return NotImplemented
+
+    cpdef gt(self, BigNum other):
+        return self.getElemRef()[0] > other.getElemRef()[0]
+
+    def __gt__(x, y):
+        cdef BigNum bgleft, bgright
+        cdef long long intright
+
+        if not (isinstance(x, BigNum) or isinstance(y, BigNum)):
+            return NotImplemented
+
+        if isinstance(x, BigNum):
+            if isinstance(y, BigNum):
+                bgleft = <BigNum>x
+                bgright = <BigNum>y
+                return bgleft.getElemRef()[0] > bgright.getElemRef()[0]
+            elif isinstance(y, int) or isinstance(y, long):
+                bgleft = <BigNum>x
+                intright = <long long>y
+                return bgleft.getElemRef()[0] > intright
+            else:
+                return NotImplemented
+
+        # y is bignum
+        if isinstance(x, int) or isinstance(x, long):
+            bgleft = <BigNum>y
+            intright = <long long>x
+            return bgleft.getElemRef()[0] > intright
+
+        return NotImplemented
+
+    cpdef ge(self, BigNum other):
+        return self.getElemRef()[0] >= other.getElemRef()[0]
+
+    def __ge__(x, y):
+        cdef BigNum bgleft, bgright
+        cdef long long intright
+
+        if not (isinstance(x, BigNum) or isinstance(y, BigNum)):
+            return NotImplemented
+
+        if isinstance(x, BigNum):
+            if isinstance(y, BigNum):
+                bgleft = <BigNum>x
+                bgright = <BigNum>y
+                return bgleft.getElemRef()[0] >= bgright.getElemRef()[0]
+            elif isinstance(y, int) or isinstance(y, long):
+                bgleft = <BigNum>x
+                intright = <long long>y
+                return bgleft.getElemRef()[0] >= intright
+            else:
+                return NotImplemented
+
+        # y is bignum
+        if isinstance(x, int) or isinstance(x, long):
+            bgleft = <BigNum>y
+            intright = <long long>x
+            return bgleft.getElemRef()[0] >= intright
+
+        return NotImplemented
+
     cpdef BigNum pow(self, unsigned long p):
         cdef Fr[curve] *newptr
         newptr = new Fr[curve](self.getElemRef()[0] ^ p)
